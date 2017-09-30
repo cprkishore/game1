@@ -34,14 +34,25 @@ def startgame():
                         b = random.randint (0, 10)
                         c = a + b
                         print ("Add %d + %d" % (a, b))
-                        try:
+			z = 1
+			while z <= 2:                        
+			  try:
                                 s = int(raw_input ("And enter the sum here:"))
-                                if (c == s):
-                                        print bcolors.OKGREEN + "Your Answer is CORRECT" + bcolors.ENDC
-                                else:
+                                if (c == s):                     
+					print bcolors.OKGREEN + "Your Answer is CORRECT" + bcolors.ENDC
+                                        break
+				else:
                                         print bcolors.FAIL + "Sorry WRONG Answer" + bcolors.ENDC
-                        except ValueError:
+                                        z = z + 1
+                                        if (z == 2):
+					  print "Give a second try, Good Luck!"
+                                        
+			  except ValueError:
                                 print bcolors.WARNING + "invalid data, please enter the answer as integers only" + bcolors.ENDC
+                                z = 1
+			else:
+				  print "sorry your two tries are over"
+
                         repeat =  raw_input("continue Level1?(y/n):" )
                         while repeat.lower() not in ('y','yes','n','no'):
                                 print "choose y/n"
@@ -61,6 +72,8 @@ def startgame():
                                         print bcolors.OKGREEN + "Your Answer is CORRECT" + bcolors.ENDC
                                 else:
                                         print bcolors.FAIL + "Sorry WRONG Answer" + bcolors.ENDC
+					continue
+					print "try again"
                         except ValueError:
                                 print "invalid data, please enter the answer as integers only"
                         repeat =  raw_input("continue Level2?(y/n):" )
